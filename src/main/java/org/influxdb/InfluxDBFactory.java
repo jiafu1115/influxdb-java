@@ -22,7 +22,7 @@ public enum InfluxDBFactory {
    * Create a connection to a InfluxDB.
    *
    * @param url
-   *            the url to connect to.
+   *            the url to connect.
    * @return a InfluxDB adapter suitable to access a InfluxDB.
    */
   public static InfluxDB connect(final String url) {
