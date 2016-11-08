@@ -5,10 +5,11 @@ import org.influxdb.dto.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
+import org.mockito.internal.util.io.IOUtil;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ThreadFactory;
@@ -48,6 +49,9 @@ public class InfluxDBTest {
 			}
 			Thread.sleep(100L);
 		} while (!influxDBstarted);
+		Process exec = Runtime.getRuntime().exec("netstat -nap|grep 8089");
+		Collection<String> readLines = IOUtil.readLines(exec.getInputStream());
+		System.out.println("fujian" + readLines);
 		this.influxDB.setLogLevel(LogLevel.FULL);
 		// String logs = CharStreams.toString(new InputStreamReader(containerLogsStream,
 		// Charsets.UTF_8));
